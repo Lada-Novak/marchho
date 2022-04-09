@@ -2,4 +2,79 @@
 @import "_reset.scss";
 @import "_global.scss";
 @import "_fonts.scss";
+
+.header{
+  padding: 40px 0;
+
+  &__inner{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.menu{
+  &__list{
+    display: flex;
+  }
+
+  &__item + .menu__item{
+    padding-left: 35px;
+  }
+
+  &__link{
+    color:$title-color;
+    padding-bottom: 1px;
+    transition: .3s ease;
+    @extend %quicksand-400;
+
+    &:hover{
+      color:$accent-color;
+      border-bottom: 1px solid $accent-color;
+      @extend %quicksand-500;
+    }
+  }
+
+  &__link--active{
+    color:$accent-color;
+    border-bottom: 1px solid $accent-color;
+    @extend %quicksand-500;
+  }
+}
+
+.user{
+  display: flex;
+
+  &__link{
+    position: relative;
+  }
+
+  &__link + .user__link{
+    padding-left: 25px;
+  }
+
+  &__num{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color:$accent-color;
+    top:-9px;
+    right: -14px;
+    font-size: 12px;
+    text-align: center;
+    color:#fff;
+    line-height: 20px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 @import "_media.scss";
