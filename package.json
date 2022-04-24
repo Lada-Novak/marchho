@@ -23,6 +23,7 @@
     "gulp-uglify": "^3.0.2",
     "mixitup": "^3.3.1",
     "sass": "^1.49.10",
+    "slick-carousel": "^1.8.1",
     "swiper": "^8.0.7"
   },
   "dependencies": {
