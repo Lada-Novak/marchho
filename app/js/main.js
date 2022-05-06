@@ -12,7 +12,7 @@ $(function () {
     $('.product-item').removeClass('product-item--list')
   });
   // styler
-  $('.select-style').styler();
+  $('.select-style, .product-one__item-num').styler();
 
   // ion - rangeslider
   $('.filter-price__input').ionRangeSlider({
@@ -35,6 +35,21 @@ $(function () {
     fade: true,
     autoplay: true,
     autoplaySpead: 2000,
+  });
+
+  $('.product-slide__thumb').slick({
+    asNavFor: '.product-slide__big',
+    focusOnSelect:true,
+    slidesToShow:4,
+    slidesToScroll:1,
+    vertical:true,
+    draggable:false
+  });
+  $('.product-slide__big').slick({
+    asNavFor: '.product-slide__thumb',
+    draggable: false,
+    arrows: false,
+    fade:true
   });
 
   // rateYo
