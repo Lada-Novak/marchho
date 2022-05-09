@@ -124,4 +124,10 @@ $(function () {
 
   // mixitup
   var mixer = mixitup('.article');
+
+  // map
+
+
+
+
 });
