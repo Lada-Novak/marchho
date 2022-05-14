@@ -11,9 +11,33 @@ import del from "del";
 import fs from "fs";
 import fonter from "gulp-fonter";
 import ttf2woff2 from "gulp-ttf2woff2";
+import fileinclude from "gulp-file-include";
+// import nunjucksRender from "gulp-nunjucks-render"; //1111
 
 const scss = gulpSass(dartSass);
 const browserSync = bs.create();
+// const fileinclude = require('gulp-file-include');
+
+// // Nunjucks Render
+// function nunjucks(){            //11
+//   return src('app/*.njk')       //11
+//     .pipe(nunjucksRender())     //11
+//     .pipe (dest('app'))         //11
+//     .pipe(browserSync.stream()) //11
+// }
+function fileInc() {
+  return gulp
+    .src('app/modul/**.html')
+    .pipe(
+      fileinclude({
+        prefix: '@@',
+        basepath: '@file',
+      })
+    )
+    .pipe(gulp.dest("app/"))
+    .pipe(browserSync.stream());
+}
+
 
 // Server
 
@@ -196,9 +220,10 @@ export const build = gulp.series(clearDist, images, copyToDist);
 // Watcher
 
 export const watch = () => {
-	gulp.watch(["app/scss/**/*.scss"], styles);
+  gulp.watch(["app/scss/**/*.scss"], styles);
 	gulp.watch(["app/js/**/*.js", "!app/js/main.min.js"], scripts);
+  gulp.watch(['app/html/**/*.html']).on('change', fileInc);
 	gulp.watch(["app/**/*html"]).on("change", browserSync.reload);
 };
 
-export default gulp.series(gulp.parallel(styles, scripts, server, watch));
+export default gulp.series(gulp.parallel(fileInc, styles, scripts, server, watch));
